@@ -1,0 +1,147 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("assets/background.svg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  width: 400px;
+}
+
+.feed {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  flex-wrap: wrap;
+  margin: 20px;
+  gap: 10px;
+}
+
+.feed-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.feed img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.feed img:hover {
+  transform: scale(1.1);
+  background-img: #0000;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 98%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 80%;
+  text-align: center;
+}
+
+.overlay li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.overlay li img {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.feed-item:hover .overlay {
+  opacity: 1;
+}
+
+.loader,
+.error {
+  display: none;
+}
+
+.loader {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+  margin-top: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  .feed {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .feed-item {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 900px) {
+  .feed {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .feed {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feed img {
+    height: 80px;
+  }
+}
+
+@media (max-width: 450px) {
+  .feed {
+    grid-template-columns: 1fr;
+  }
+
+  .feed {
+    height: 70vh;
+  }
+
+  .feed img {
+    height: auto;
+  }
+
+  .title {
+    width: 80%;
+  }
+}
